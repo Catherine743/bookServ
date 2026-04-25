@@ -74,3 +74,34 @@ exports.googleLoginController = async (req, res) => {
         res.status(500).json(error)
     }
 }
+
+// editUserController
+exports.editUserController = async (req, res) => {
+    console.log("Inside edit user controller");
+    const email = req.payload
+    const { id } = req.params
+    const { password, username, bio, role, picture } = req.body
+    const updatePicture = req.file ? req.file.filename : picture
+    console.log(id, email, password, username, bio, role, picture, updatePicture);
+    try {
+        const updateUser = await users.findByIdAndUpdate({ _id: id }, { email, password, username, bio, role, picture: updatePicture }, { new: true })
+        res.status(200).json(updateUser)
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json(error)
+    }
+}
+
+// getAllUsers - admin
+exports.getAllUsersController = async (req, res) => {
+    console.log("Inside get AllUsers Controller");
+    try {
+        const allUsers = await users.find({ role: { $ne: 'admin' } })
+        res.status(200).json(allUsers)
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json(error)
+    }
+}
