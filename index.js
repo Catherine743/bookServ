@@ -19,7 +19,7 @@ bookStoreServer.use(express.json())
 bookStoreServer.use(router)
 
 // handle image from server
-bookStoreServer.use('/uploads', express.static('./uploads'))
+// bookStoreServer.use('/uploads', express.static('./uploads'))
 
 // create port for server to available on web
 const PORT = 3000
