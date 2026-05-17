@@ -31,18 +31,11 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 const storage = new CloudinaryStorage({
   cloudinary,
-
-  params: async (req, file) => {
-
-    let folder = "smartTracker";
-
-    let resource_type = "auto";
-
-    return {
-      folder,
-      resource_type,
-      public_id: `${Date.now()}-${file.originalname}`,
-    };
+  params: {
+    folder: "BookStore",
+    resource_type: "auto",
+    public_id: (req, file) =>
+      `${Date.now()}-${file.originalname}`,
   },
 });
 

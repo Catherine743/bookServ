@@ -6,7 +6,7 @@ exports.addBookController = async (req, res) => {
     console.log("Inside add book controller");
     const { title, author, pages, imageUrl, price, discountPrice,
         abstract, publisher, language, isbn, category } = req.body;
-    const uploadImg = req.files.map(item => item.filename)
+    const uploadImg = req.files.map(item => item.path)
     const sellerMail = req.payload
     // console.log(title, author, pages, imageUrl, price, discountPrice,
     //     abstract, publisher, language, isbn, category, uploadImg, sellerMail);
