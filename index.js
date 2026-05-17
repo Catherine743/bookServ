@@ -19,10 +19,10 @@ bookStoreServer.use(express.json())
 bookStoreServer.use(router)
 
 // handle image from server
-// bookStoreServer.use('/uploads', express.static('./uploads'))
+bookStoreServer.use('/uploads', express.static('./uploads'))
 
 // create port for server to available on web
-const PORT = process.env.PORT || 3000
+const PORT = 3000
 
 bookStoreServer.listen(PORT,() => {
     console.log(`Bookstore server started running at PORT:${PORT} and waiting for client request`);

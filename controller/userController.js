@@ -81,7 +81,7 @@ exports.editUserController = async (req, res) => {
     const email = req.payload
     const { id } = req.params
     const { password, username, bio, role, picture } = req.body
-    const updatePicture = req.file ? req.file.path : picture
+    const updatePicture = req.file ? req.file.filename : picture
     console.log(id, email, password, username, bio, role, picture, updatePicture);
     try {
         const updateUser = await users.findByIdAndUpdate({ _id: id }, { email, password, username, bio, role, picture: updatePicture }, { new: true })
